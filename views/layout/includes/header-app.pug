@@ -1,0 +1,66 @@
+header(class="bg-white border-gray-200 dark:bg-indigo-600")
+    .max-w-screen-xl.flex.flex-wrap.items-center.justify-between.mx-auto.p-4
+        a(href="/")
+            h1.text-2xl.text-white.font-extrabold.text-center Bienes
+                span.font-normal Raices
+        button(data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-white dark:hover:bg-indigo-600 dark:focus:ring-indigo-600" aria-controls="navbar-default" aria-expanded="false")
+            span(class="sr-only")
+            svg(class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14")
+                path(stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15")
+        
+        div(class="hidden w-full md:block md:w-auto" id="navbar-default")
+            nav(class="font-bold flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 text-white")
+                a(href="/registro" class="py-2") Crear Cuenta
+                a(href="/login" class="py-2") Iniciar Sesión
+            
+div(class="bg-white border-gray-200 dark:bg-indigo-700")
+    div(class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 md:flex-col md:gap-2")
+        button(data-collapse-toggle="navbar-category" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-white dark:hover:bg-indigo-600 dark:focus:ring-indigo-600" aria-controls="navbar-category" aria-expanded="false")    
+            svg(xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" data-slot="icon" class="w-6 h-6")
+                path(stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z")
+        div(class="hidden w-full md:block md:w-auto" id="navbar-category")
+            nav(class="font-medium flex flex-col p-4 md:p-0 m-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 text-white")                    
+                a(href="/categorias/1" class="text-sm font-bold uppercase text-white") Casas
+                a(href="/categorias/2" class="text-sm font-bold uppercase text-white") Departamentos
+                a(href="/categorias/3" class="text-sm font-bold uppercase text-white") Bodegas
+                a(href="/categorias/4" class="text-sm font-bold uppercase text-white") Terrenos
+                a(href="/categorias/5" class="text-sm font-bold uppercase text-white") Cabañas
+
+        button(data-collapse-toggle="navbar-seeker" type="button" class="md:mt-2 inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-white dark:hover:bg-indigo-600 dark:focus:ring-indigo-600" aria-controls="navbar-seeker" aria-expanded="false")    
+            svg(class="w-4 h-4 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20")
+                path(stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z")
+        div(class="hidden w-full md:block md:w-auto" id="navbar-seeker")
+            form(action="/buscador" method="POST" class="flex gap-3 items-center m-2")
+                        input(type="hidden" name="_csrf" value=csrfToken)
+                        label(for="termino")
+                        input(type="text" id="termino" name="termino" placeholder="Buscar Propiedades" class="p-2 rounded-lg shadow text-sm")
+
+                        input(type="submit" class="bg-indigo-800 hover:bg-indigo-400 rounded-lg text-white uppercase font-bold p-2 cursor-pointer text-sm" value="Buscar")
+
+script.
+  document.addEventListener("DOMContentLoaded", function() {
+    const button = document.querySelector("[data-collapse-toggle]");
+    const menu = document.getElementById("navbar-default");
+
+    button.addEventListener("click", function() {
+      menu.classList.toggle("hidden");
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const button = document.querySelector("[data-collapse-toggle='navbar-category']");
+    const menu = document.getElementById("navbar-category");
+
+    button.addEventListener("click", function() {
+      menu.classList.toggle("hidden");
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const button = document.querySelector("[data-collapse-toggle='navbar-seeker']");
+    const menu = document.getElementById("navbar-seeker");
+
+    button.addEventListener("click", function() {
+      menu.classList.toggle("hidden");
+    });
+  });
