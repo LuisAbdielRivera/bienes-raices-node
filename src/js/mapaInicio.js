@@ -1,7 +1,7 @@
 (function(){
     // Logical Or
-    const lat = 20.2806337;
-    const lng = -97.9555165;
+    const lat = 19.465849;
+    const lng = -99.153912;
     const mapa = L.map('mapa-inicio').setView([lat, lng ], 15);
 
     let markers = new L.FeatureGroup().addTo(mapa)
